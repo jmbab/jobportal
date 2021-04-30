@@ -14,4 +14,5 @@ function createArray(array){
     return list;
 }
 document.getElementById('alist').appendChild(createArray(jobs[0]));
+
 console.log(jobs)

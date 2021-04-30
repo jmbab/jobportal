@@ -1,18 +1,14 @@
-package com.jobPortal.controller;
+package com.jp.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class jobController {
-
-
+public class JobController {
 
 
     @GetMapping("/jobList")
-    public String jobController(){
-        return "jobList";
+    public String jobList(){
+        return "joblist";
     }
-
-
 }
