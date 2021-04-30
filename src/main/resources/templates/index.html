@@ -2,9 +2,72 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/style.css">
     <title>index</title>
 </head>
 <body>
-hello world please virk
+<div class="topnav">
+    <input id="searchField" type="text" placeholder="Search..">
+    <button onclick="searchWithField()">Search</button>
+    <ul id="searchResult"></ul>
+</div>
+
+<div>
+    <div id="list"></div>
+</div>
 </body>
+<script>
+    const jobs = [
+        {
+            'name': 'CTO',
+            'category': 'IT'
+        },
+        {
+            'name': 'Software Developer',
+            'category': 'IT'
+        },
+        {
+            'name': 'Carpenter',
+            'category': 'Physical'
+        },
+        {
+            'name': 'Chef',
+            'category': 'Food'
+        }]
+
+
+    console.log(jobs)
+
+    function searchWithField() {
+        let ul = document.getElementById('searchResult')
+        let field = document.getElementById('searchField')
+        let searchString = field.value
+        let jobs = search(searchString)
+
+        ul.innerHTML = "";
+        jobs.forEach(job => {
+            let li = document.createElement('li')
+            li.innerText = `${job.name}, Category: ${job.category}`
+            ul.appendChild(li)
+        })
+    }
+
+    function search(searchString){
+        if (typeof searchString !== 'string' || searchString.length === 0){
+            return jobs;
+        }
+
+        let searchLower = searchString.toLowerCase()
+        return jobs.filter(job => {
+            if (job.name.toLowerCase().includes(searchLower)) {
+                return true
+            }
+
+            if (job.category.toLowerCase().includes(searchLower)){
+                return true
+            }
+
+        })
+    }
+</script>
 </html>
