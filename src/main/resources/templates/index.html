@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/style.css">
     <title>index</title>
 </head>
@@ -38,25 +39,19 @@
     console.log(jobs)
 
     function makeUL(array) {
-        // Create the list element:
 
         const list = document.createElement('ul');
         for (let i = 0; i < array.length; i++) {
-            // Create the list item:
 
             const item = document.createElement('li');
-            // Set its contents:
 
             item.appendChild(document.createTextNode(array[i]['name'] + ", category: " + array[i]['category']));
-            // Add it to the list:
             list.appendChild(item);
 
         }
-        // Finally, return the constructed list:
         return list;
 
     }
-    // Add the contents of options[0] to #foo:
     document.getElementById('searchResult').appendChild(makeUL(jobs));
 
     function searchWithField() {
