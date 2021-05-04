@@ -1,0 +1,13 @@
+.page-item, .page-link{
+
+
+    background-color: cornflowerblue;
+    border: 3px black;
+    color: white;
+    padding: 10px 22px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+
+}
