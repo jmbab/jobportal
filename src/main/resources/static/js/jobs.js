@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $.ajax({
-        // url: "http://localhost:8085/activities",
+         url: "http://3.236.216.244:9090/jobs",
 
         success: function (result) {
             console.log(result);
