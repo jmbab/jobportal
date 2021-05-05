@@ -13,31 +13,27 @@
     <ul id="searchResult"></ul>
 </div>
 
-<div>
-    <div id="list"></div>
-</div>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <script>
-    const jobs = [
-        {
-            'name': 'CTO',
-            'category': 'IT'
-        },
-        {
-            'name': 'Software Developer',
-            'category': 'IT'
-        },
-        {
-            'name': 'Carpenter',
-            'category': 'Physical'
-        },
-        {
-            'name': 'Chef',
-            'category': 'Food'
-        }]
+    let jobs = []
 
-    console.log(jobs)
+    $.ajax({
+        url: "http://3.236.216.244:9090/jobs",
 
+
+        success: function (result) {
+            $.each(result, function (key, value) {
+
+                jobs.push(value['jobscol'])
+            });
+            $('#searchResult').html(makeUL(jobs))
+        }
+    })
+
+
+    // let newjobs = jobs;
     function makeUL(array) {
 
         const list = document.createElement('ul');
@@ -45,7 +41,7 @@
 
             const item = document.createElement('li');
 
-            item.appendChild(document.createTextNode(array[i]['name'] + ", category: " + array[i]['category']));
+            item.appendChild(document.createTextNode(array[i]));
             list.appendChild(item);
 
         }
@@ -63,7 +59,7 @@
         ul.innerHTML = "";
         jobs.forEach(job => {
             let li = document.createElement('li')
-            li.innerText = `${job.name}, Category: ${job.category}`
+            li.innerText = `${job}`
             ul.appendChild(li)
         })
     }
@@ -75,14 +71,9 @@
 
         let searchLower = searchString.toLowerCase()
         return jobs.filter(job => {
-            if (job.name.toLowerCase().includes(searchLower)) {
+            if (job.toLowerCase().includes(searchLower)) {
                 return true
             }
-
-            if (job.category.toLowerCase().includes(searchLower)){
-                return true
-            }
-
         })
     }
 
