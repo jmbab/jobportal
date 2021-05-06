@@ -7,50 +7,55 @@
     <title>index</title>
 </head>
 <body>
+
 <div class="topnav">
     <input id="searchField" type="text" placeholder="Search..">
     <button onclick="searchWithField()">Search</button>
     <ul id="searchResult"></ul>
 </div>
 
+
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-    let jobs = []
 
-    $.ajax({
-        url: "http://3.236.216.244:9090/jobs",
+   let joblist = []
 
+            $.ajax({
+                url: "http://3.236.216.244:9090/jobs",
 
-        success: function (result) {
-            $.each(result, function (key, value) {
+                success: function (result) {
+                    console.log(result);
+                    $.each(result, function (key, value) {
+                        joblist.push(value["jobscol"]+"<br><br>")
 
-                jobs.push(value['jobscol'])
-            });
-            $('#searchResult').html(makeUL(jobs))
-        }
-    })
+                    })
+                    $("#searchResult").html(joblist)
 
+                }
+            })
+                    console.log(joblist)
 
-    // let newjobs = jobs;
-    function makeUL(array) {
+        function makeUL(array) {
 
         const list = document.createElement('ul');
         for (let i = 0; i < array.length; i++) {
 
             const item = document.createElement('li');
 
-            item.appendChild(document.createTextNode(array[i]));
+            item.appendChild(document.createTextNode(array[i]['idjobs'] + ", category: " + array[i]['jobscol']));
             list.appendChild(item);
 
         }
         return list;
 
     }
-    document.getElementById('searchResult').appendChild(makeUL(jobs));
+    document.getElementById('searchResult').appendChild(makeUL(joblist));
 
-    function searchWithField() {
+        function searchWithField() {
         let ul = document.getElementById('searchResult')
         let field = document.getElementById('searchField')
         let searchString = field.value
@@ -74,13 +79,17 @@
             if (job.toLowerCase().includes(searchLower)) {
                 return true
             }
+
+            if (job.category.toLowerCase().includes(searchLower)){
+                return true
+            }
+
         })
     }
 
 
+
 </script>
-<!-- til at gå til det pågældende job  -->
-<a href="http://localhost:8080/jobinfo"><button class="page-item">JOB-Info</button></a>
 
 <nav aria-label="...">
    <ul class="pagination">
@@ -97,4 +106,6 @@
        </li>
    </ul>
 </nav>
+
+
 </html>
