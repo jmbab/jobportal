@@ -42,21 +42,12 @@
     </xml><![endif]-->
 </head>
 <body class="mt32">
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap5.min.js"></script>
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
 <div class="container">
     <h3>
         <span>Hubindex</span>
         <input type="search" placeholder="Search..." class="form-control search-input" data-table="customers-list"/>
     </h3>
-    <table class="table table-striped mt32 customers-list" id="table">
+    <table class="table table-striped mt32 customers-list">
         <thead>
         <tr style="color:black">
             <th scope="col">Job title</th>
@@ -130,30 +121,16 @@
                         "</td>";
                 });
                 tableRows += "</tr>";
-                // $("#tbl1").html(tableRows)
+                $("#tbl1").html(tableRows)
             }
         })
     })
 
 
 </script>
-<!--<script>-->
-<!--    $(document).ready(function () {-->
-<!--        $('#table').DataTable({-->
-<!--            "pagingType" : "full_numbers",-->
-<!--            "searching" : false,-->
-<!--            "ordering": false,-->
-<!--            // "info" : false,-->
-<!--            "lengthChange" : false,-->
-<!--            "pageLength": 3,-->
-<!--            "ajax" : "http://3.236.216.244:9090/jobs",-->
-<!--            "columns":[-->
-<!--                    { "data" : "jobtitle"}-->
-<!--                ]-->
-
-<!--        })-->
-<!--    });-->
-<!--</script>-->
-
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
 </html>
